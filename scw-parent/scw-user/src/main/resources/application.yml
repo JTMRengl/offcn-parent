@@ -1,0 +1,38 @@
+server:
+  port: 7000
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3308/atcrowdfunding?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat  #开启监控过滤器
+  application:
+    name: SCW-USER
+
+  redis:
+    host: 192.168.188.158
+    port: 6379
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:com/offcn/user/mapper/*.xml
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+logging:
+  file:
+    path: d:\log\scw-user
+  level:
+    com:
+      offcn: debug
+sms:
+  host: http://dingxin.market.alicloudapi.com
+  path: /dx/sendSms
+  method: POST
+  appcode: 15649dc066f64e96862e1f26c21849ba  #修改为自己的appcode
+
