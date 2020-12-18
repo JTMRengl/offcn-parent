@@ -1,0 +1,31 @@
+server:
+  port: 9000
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3308/atcrowdfunding?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    host: 192.168.188.158
+    port: 6379
+  application:
+    name: SCW-ORDER
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:com/offcn/order/mapper/*.xml
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    appname: SCW-ORDER
+    prefer-ip-address: true
+
+feign:
+  hystrix:
+    enabled: true
+ribbon:
+  eureka:
+    enabled: true
