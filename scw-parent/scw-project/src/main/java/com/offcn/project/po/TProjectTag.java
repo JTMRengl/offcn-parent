@@ -34,4 +34,10 @@ public class TProjectTag implements Serializable {
     public void setTagid(Integer tagid) {
         this.tagid = tagid;
     }
+
+    public TProjectTag(Integer id, Integer projectid, Integer tagid) {
+        this.id = id;
+        this.projectid = projectid;
+        this.tagid = tagid;
+    }
 }

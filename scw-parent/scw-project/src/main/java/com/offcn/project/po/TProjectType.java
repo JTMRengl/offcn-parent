@@ -34,4 +34,10 @@ public class TProjectType implements Serializable {
     public void setTypeid(Integer typeid) {
         this.typeid = typeid;
     }
+
+    public TProjectType(Integer id, Integer projectid, Integer typeid) {
+        this.id = id;
+        this.projectid = projectid;
+        this.typeid = typeid;
+    }
 }

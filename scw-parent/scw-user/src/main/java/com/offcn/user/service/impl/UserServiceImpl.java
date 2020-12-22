@@ -2,8 +2,11 @@ package com.offcn.user.service.impl;
 
 import com.offcn.user.enums.UserExceptionEnum;
 import com.offcn.user.exception.UserException;
+import com.offcn.user.mapper.TMemberAddressMapper;
 import com.offcn.user.mapper.TMemberMapper;
 import com.offcn.user.po.TMember;
+import com.offcn.user.po.TMemberAddress;
+import com.offcn.user.po.TMemberAddressExample;
 import com.offcn.user.po.TMemberExample;
 import com.offcn.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,10 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private TMemberMapper memberMapper;
+
+    @Autowired
+    private TMemberAddressMapper memberAddressMapper;
+
 
     @Override
     public void registerUser(TMember member) {
@@ -66,4 +73,19 @@ public class UserServiceImpl implements UserService {
     public TMember findTMemberById(Integer id) {
         return memberMapper.selectByPrimaryKey( id );
     }
+
+    /**
+     * 获取用户收货地址
+     *
+     * @param memberId
+     * @return
+     */
+    @Override
+    public List<TMemberAddress> addressList(Integer memberId) {
+        TMemberAddressExample example = new TMemberAddressExample();
+        TMemberAddressExample.Criteria criteria = example.createCriteria();
+        criteria.andMemberidEqualTo(memberId);
+        return memberAddressMapper.selectByExample(example);
+    }
+
 }

@@ -83,7 +83,6 @@
     <if test="distinct">
       distinct
     </if>
-    'true' as QUERYID,
     <include refid="Base_Column_List" />
     from t_project
     <if test="_parameter != null">
@@ -110,6 +109,7 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.offcn.project.po.TProject">
+
     insert into t_project (id, name, remark, 
       money, day, status, deploydate, 
       supportmoney, supporter, completion, 
@@ -122,6 +122,12 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.offcn.project.po.TProject">
+
+
+    <selectKey keyColumn="id" keyProperty="id" resultType="int" order="AFTER">
+      select last_insert_id()
+    </selectKey>
+
     insert into t_project
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

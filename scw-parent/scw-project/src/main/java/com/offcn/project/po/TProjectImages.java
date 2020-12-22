@@ -44,4 +44,11 @@ public class TProjectImages implements Serializable {
     public void setImgtype(Byte imgtype) {
         this.imgtype = imgtype;
     }
+
+    public TProjectImages(Integer id, Integer projectid, String imgurl, Byte imgtype) {
+        this.id = id;
+        this.projectid = projectid;
+        this.imgurl = imgurl;
+        this.imgtype = imgtype;
+    }
 }
