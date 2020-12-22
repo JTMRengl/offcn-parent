@@ -2,7 +2,9 @@ package com.offcn.dycommon.response;
 
 import com.offcn.dycommon.enums.ResponseCodeEnum;
 
-public class AppResponse<T> {
+import java.io.Serializable;
+
+public class AppResponse<T> implements Serializable {
 
     private Integer code;
     private String msg;
